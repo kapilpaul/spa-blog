@@ -4,8 +4,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="b-title-page">latest from won</h1>
-                        <div class="b-title-page__info">read the blog</div>
+                        <h1 class="b-title-page">{{ title }}</h1>
+                        <div class="b-title-page__info">{{ pageInfo }}</div>
                         <ol class="breadcrumb">
                             <li><a href="home.html">home</a></li>
                             <li class="active">blog</li>
@@ -20,9 +20,19 @@
 </template>
 
 <script>
-  export default {
-    name: 'pageTitle'
-  }
+export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    pageInfo: {
+      type: String,
+      default: ''
+    }
+  },
+  name: 'pageTitle'
+}
 </script>
 
 <style scoped>

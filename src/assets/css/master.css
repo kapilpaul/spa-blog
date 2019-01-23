@@ -1,0 +1,38 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:  Won
+Version:  1.0
+Assigned to:  WebNik
+Primary use:  Won
+-------------------------------------------------------------------*/
+
+
+/* FONTS*/
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900|Merriweather:300,300i,400,400i,700,700i');
+@import '../fonts/font-awesome-4.6.3/css/font-awesome.min.css';
+@import '../fonts/stroke/style.css';
+@import '../fonts/elegant/style.css';
+@import '../fonts/themify-icons/themify-icons.css';
+/*@import '../fonts/flaticon/font/flaticon.css';*/
+
+
+
+/* PLUGIN CSS */
+
+@import '../libs/bootstrap/bootstrap.css';                /* bootstrap */
+@import '../plugins/headers/header.css';                /* header */
+/*@import '../plugins/headers/yamm.css';                !* header *!*/
+@import '../plugins/slider-pro/slider-pro.css';         /* main slider */
+@import '../plugins/owl-carousel/owl.theme.css';                 /* other sliders */
+@import '../plugins/magnific-popup/magnific-popup.css';            /* modal */
+@import '../plugins/animate/animate.css';                        /* animations */
+@import '../plugins/TiltHoverEffects/css/component.css';         /* animations */
+
+
+
+/* MAIN CSS */
+
+@import 'theme.css';
+@import 'color.css';
+@import 'responsive.css';
