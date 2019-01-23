@@ -2,8 +2,8 @@
     <div id="infinite-list">
         <section class="b-post b-post-3 clearfix scrollreveal" v-for="(post, index) in posts" :key="index">
             <div class="entry-media">
-                <a class="js-zoom-images" href="../../assets/media/content/posts/360x350/1.jpg">
-                    <img class="img-responsive read more" src="../../assets/media/content/posts/360x350/1.jpg"
+                <a class="js-zoom-images" :href="post._embedded['wp:featuredmedia']['0'].source_url">
+                    <img class="img-responsive read more" :src="post._embedded['wp:featuredmedia']['0'].source_url"
                          alt="Foto"/>
                 </a>
             </div>
@@ -12,12 +12,19 @@
                         class="entry-date__month">Apr</span></div>
                 <div class="entry-main">
                     <div class="entry-header">
-                        <div class="entry-meta"><span class="entry-meta__item"><a
-                                class="entry-meta__link text-primary" href="blog-main.html"><strong>john sena</strong></a></span><span
-                                class="entry-meta__item"><a class="entry-meta__link text-primary"
-                                                            href="blog-main.html"><strong>web design</strong></a></span>
+                        <div class="entry-meta">
+                          <span class="entry-meta__item">
+                               <a class="entry-meta__link text-primary" href="blog-main.html">
+                                   <strong>{{ post._embedded.author[0].name }}</strong>
+                               </a>
+                           </span>
+                           <span class="entry-meta__item">
+                               <a class="entry-meta__link text-primary" href="blog-main.html"><strong>web design</strong></a></span>
                         </div>
-                        <h2 class="entry-title"><a href="blog-post.html" v-html="post.title.rendered"></a></h2>
+                        <h2 class="entry-title">
+                           <router-link :to="'/posts/' + post.slug" v-html="post.title.rendered">
+                            </router-link>
+                        </h2>
                     </div>
                     <div class="entry-content" v-html="post.excerpt.rendered">
                     </div>
@@ -72,13 +79,13 @@ export default {
     },
     getPosts () {
       this.loader = true
-      axios.get('posts?page=' + this.nextpage).then(response => {
+      axios.get('posts?_embed&page=' + this.nextpage).then(response => {
         response.data.map(item => {
           this.posts.push(item)
         })
         this.nextpage++
         this.loader = false
-      }).catch(error => {
+      }).catch(() => {
         this.loader = false
       })
     }

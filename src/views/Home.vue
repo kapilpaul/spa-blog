@@ -11,13 +11,6 @@
                         <main class="l-main-content">
                             <div class="posts-group wrap-inl-bl">
                                 <post></post>
-                                <!--<ul class="pagination pagination_post text-center">-->
-                                    <!--<li><a href="#"></a></li>-->
-                                    <!--<li><a href="#">1</a></li>-->
-                                    <!--<li class="active"><a href="#">2</a></li>-->
-                                    <!--<li><a href="#">3</a></li>-->
-                                    <!--<li><a href="#"></a></li>-->
-                                <!--</ul>-->
                             </div>
                         </main>
                     </div>
