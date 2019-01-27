@@ -1,6 +1,6 @@
 <template>
     <div id="infinite-list">
-        <section class="b-post b-post-3 clearfix scrollreveal" v-for="(post, index) in posts" :key="index">
+        <section class="b-post b-post-3 clearfix scrollreveal" v-for="post in posts" :key="post.id" data-aos="slide-left">
             <div class="entry-media">
                 <a class="js-zoom-images" :href="post._embedded['wp:featuredmedia']['0'].source_url">
                     <img class="img-responsive read more" :src="post._embedded['wp:featuredmedia']['0'].source_url"
@@ -33,6 +33,7 @@
                 </div>
             </div>
         </section>
+
         <transition name="fade">
             <div class="loader text-center" v-if="loader">
                 <i class="fa fa-spinner fa-spin"></i>
@@ -45,6 +46,8 @@
 
 <script>
 import axios from 'axios'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 export default {
   name: 'post',
   data () {
@@ -54,6 +57,9 @@ export default {
       bottom: false,
       nextpage: 1
     }
+  },
+  created () {
+    AOS.init()
   },
   mounted () {
     // Detect when scrolled to bottom.

@@ -24,5 +24,8 @@ export default new Router({
       path: '/posts/:slug/',
       component: () => import('./components/blog/post-single.vue')
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

@@ -5,14 +5,14 @@
             <div class="row">
                 <div class="col-md-9">
                     <main class="l-main-content" v-if="typeof post.title !== 'undefined'">
-                        <div class="posts-group posts-group_pdg-right_lg">
+                        <div class="posts-group posts-group_pdg-right_lg" data-aos="fade">
                             <article class="b-post b-post-full clearfix">
                                 <div class="entry-date"><span class="entry-date__number">29</span><span
                                         class="entry-date__month">Apr</span></div>
                                 <div class="entry-main">
                                     <div class="entry-header">
                                         <div class="entry-meta"><span class="entry-meta__item"><a
-                                                class="entry-meta__link" href="blog-main.html">john sena</a></span><span
+                                                class="entry-meta__link" href="blog-main.html">{{ post._embedded.author[0].name }}</a></span><span
                                                 class="entry-meta__item"><a class="entry-meta__link"
                                                                             href="blog-main.html">web design</a></span>
                                         </div>
@@ -72,6 +72,9 @@ import axios from 'axios'
 import pageTitle from '@/components/blog/page-title.vue'
 import blogSidebar from '@/components/blog/sidebar.vue'
 import footerArea from '@/components/footer.vue'
+import JQuery from 'jquery'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 export default {
   name: 'postSingle',
   data () {
@@ -79,6 +82,9 @@ export default {
       post: [],
       loader: false
     }
+  },
+  created () {
+    AOS.init()
   },
   mounted () {
     this.getPosts()
@@ -94,6 +100,9 @@ export default {
       axios.get('posts?_embed&slug=' + this.$route.params.slug).then(response => {
         this.post = response.data[0]
         this.loader = false
+      }).then(() => {
+        JQuery('img').addClass('img-responsive')
+        JQuery('iframe').addClass('embed-responsive-item')
       }).catch(() => {
         this.loader = false
       })
@@ -112,4 +121,11 @@ export default {
 .fade-enter, .fade-leave-to {
     opacity: 0
 }
+</style>
+
+<style>
+    iframe {
+        width: 100%;
+        height: 300px;
+    }
 </style>
